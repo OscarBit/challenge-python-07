@@ -81,13 +81,16 @@ def run():
     adults = filter(lambda person: person['age'] >= 18, DATA)
 
     def homeless(worker):
-        worker['homeless'] = worker['organization'] == ''
-        return worker
+        new_worker = dict(worker)
+        new_worker['homeless'] = new_worker['organization'] == ''
+        return new_worker
+
     workers = map(homeless, DATA)
 
     def old(person):
-        person['old'] = person['age'] >= 30
-        return person
+        new_person = dict(person)
+        new_person['old'] = new_person['age'] >= 30
+        return new_person
 
     old_people = map(old, DATA)
 
